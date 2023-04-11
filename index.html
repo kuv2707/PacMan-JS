@@ -8,33 +8,7 @@
     <title>Pac-Man</title>
 </head>
 <body>
-    <script type="module">
-        import transf from "./transformManager.js"
-        window.transf=transf
-        import ghost from "./ghosts.js"
-        import generateMap from  "./map.js"
-        let field=document.createElement("div")
-        field.className="field"
-        document.body.append(field)
-        
-        const map=generateMap(field)
-        let g=new ghost(map,{x:50,y:50})
-        field.append(g.htmltag)
-        g.startMoving()
-
-        map.forEach(pix=>
-        {
-            let wall=document.createElement("div")
-            wall.className="wall"
-            field.append(wall)
-            transf(wall)
-            wall.move(pix.x,pix.y);
-
-        })
-
-
-
-
+    <script type="module" src="main.js"></script>
     </script>
 </body>
 </html>

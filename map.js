@@ -5,48 +5,45 @@ for(let i=0;i<BOARD.length;i++)
 {
     BOARD[i]=new Array(MAP_WIDTH)
 }
-
-
 function generateMap(parentNode)
 {
-    for (let i = 0; i < MAP_HEIGHT; i ++)
+    const addWallAt=function(x,y)
     {
         let k = document.createElement("div")
         k.className = "wall"
         window.transf(k)
-        k.move(0,i*20)
-        BOARD[i][0]=k
+        k.move(y*20,x*20)
+        BOARD[x][y]=k
         parentNode.append(k)
+    }
+    for (let i = 0; i < MAP_HEIGHT; i ++)
+    {
+        addWallAt(i,0)
     }
 
     for (let i = 0; i < MAP_HEIGHT; i ++)
     {
-        let k = document.createElement("div")
-        k.className = "wall"
-        window.transf(k)
-        k.move((MAP_WIDTH-1)*20,i*20)
-        BOARD[i][MAP_WIDTH-1]=k
-        parentNode.append(k)
+        addWallAt(i,MAP_WIDTH-1)
     }
     for (let i = 1; i < MAP_WIDTH; i++)
     {
-        let k = document.createElement("div")
-        k.className = "wall"
-        window.transf(k)
-        k.move(i*20,0)
-        BOARD[0][i]=k
-        parentNode.append(k)
+        addWallAt(0,i)
     }
     for (let i = 1; i < MAP_WIDTH; i++)
     {
-        let k = document.createElement("div")
-        k.className = "wall"
-        window.transf(k)
-        k.move(i*20,20*(MAP_HEIGHT-1))
-        BOARD[MAP_HEIGHT-1][i]=k
-        parentNode.append(k)
+        addWallAt(MAP_HEIGHT-1,i)
     }
+
+
+    addWallAt(5,5)
+    addWallAt(5,6)
+    addWallAt(5,7)
+
+
     return BOARD
 }
+
+
+
 
 export default generateMap
