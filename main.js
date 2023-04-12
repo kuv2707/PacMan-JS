@@ -1,3 +1,6 @@
+window.CELL_DIMENSION=30
+
+
 import transf from "./transformManager.js"
 window.transf=transf
 import Pacman from "./PacMan.js"

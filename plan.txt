@@ -1,0 +1,7 @@
+make the map
+make the pacman
+make the pellet objects 
+make the ghost objects
+
+implement pacman eating the pellets
+implement ghosts being scared of pacman
