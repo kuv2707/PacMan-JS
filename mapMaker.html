@@ -31,15 +31,18 @@
             }
         }
         
-        for(let i=0;i<20*35;i++)
+        for(let i=0;i<20;i++)
         {
-            let cell=document.createElement("div")
-            cell.className="cell"
-            cell.x=Math.floor(i/20)
-            cell.y=i%35;
-            cell.name=""+i
-            cell.onmousemove=hand
-            field.append(cell)
+            for(let j=0;j<35;j++)
+            {
+                let cell=document.createElement("div")
+                cell.className="cell"
+                cell.x=j
+                cell.y=i;
+                cell.name=j+""+i
+                cell.onmousemove=hand
+                field.append(cell)
+            }
         }
         document.body.append(field)
 

@@ -28,6 +28,7 @@ export default class Ghost
                 este.position.y+=este.dir.y
             }
             este.htmltag.move(window.CELL_DIMENSION*este.position.x,window.CELL_DIMENSION*este.position.y)
+            setTimeout(()=>este.map[este.position.y][este.position.x]?.remove(),100)
         }
         document.body.addEventListener("keydown",(e)=>//arrow keys are not detected on keypress
         {
@@ -63,7 +64,7 @@ export default class Ghost
     }
     inBounds(v)
     {
-        return !this.map[v.y][v.x]
+        return !(this.map[v.y][v.x].className=="wall")
     }
 }
 

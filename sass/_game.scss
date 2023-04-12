@@ -8,7 +8,15 @@
     border-radius: 3px;
 }
 
-.pellets
+.pellet
 {
-    
+    background-image: radial-gradient(white,black 30%);
+    position: absolute;
+    width:$CELL_DIMENSION;
+    height: $CELL_DIMENSION;
+
+    &-bonus
+    {
+        background-image: radial-gradient(white,black 45%);
+    }
 }

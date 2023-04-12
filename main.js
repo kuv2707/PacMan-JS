@@ -5,12 +5,11 @@ import transf from "./transformManager.js"
 window.transf=transf
 import Pacman from "./PacMan.js"
 import generateMap from  "./map.js"
-let field=document.createElement("div")
-field.className="field"
-document.body.append(field)
 
+
+let field=document.querySelector(".field")
 const map=generateMap(field)
-let g=new Pacman(map,{x:2,y:2})
+let g=new Pacman(map,{x:1,y:1})
 field.append(g.htmltag)
 document.body.addEventListener("keypress",(e)=>
 {
@@ -18,13 +17,3 @@ document.body.addEventListener("keypress",(e)=>
     g.startMoving()
 
 },{once:true})
-
-map.forEach(pix=>
-{
-    let wall=document.createElement("div")
-    wall.className="wall"
-    field.append(wall)
-    transf(wall)
-    wall.move(pix.x,pix.y);
-
-})
