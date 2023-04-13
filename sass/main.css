@@ -52,12 +52,19 @@
   grid-template-columns: repeat(35, 30px);
   grid-template-rows: repeat(20, 30px);
   left: 50%;
+  top: 10%;
   transform: translateX(-525px);
 }
 
 body {
   background-color: rgb(0, 0, 0);
   overflow: hidden;
+}
+
+.score {
+  display: block;
+  color: white;
+  text-align: center;
 }
 
 .ghost {

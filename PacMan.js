@@ -2,7 +2,7 @@ import transf from "./transformManager.js"
 const MOVTIME=250
 export default class
 {
-    constructor(map,initpos)
+    constructor(map,initpos,scoreBoard)
     {
         this.map=map
         let htmlelem=document.createElement("img")
@@ -32,7 +32,18 @@ export default class
             este.htmltag.move(window.CELL_DIMENSION*este.position.x,window.CELL_DIMENSION*este.position.y)
             
             setTimeout(()=>{
-                este.map[este.position.y][este.position.x]?.remove()
+                let k=este.map[este.position.y][este.position.x]
+                console.log(k.className)
+                if(k  &&  k.className.includes("pellet"))
+                {
+                    k.remove()
+                    if(k.className.includes("-bonus"))
+                    {
+                        console.log("bonusss")
+                    }
+                    console.log("ate")
+                    scoreBoard.setParameter("score",scoreBoard.getParameter("score")+k.points)
+                }
                 este.map[este.position.y][este.position.x]={className:"null"}
                 
             },100)
@@ -68,6 +79,10 @@ export default class
     startMoving()
     {
         this.movid=setInterval(this.mover,MOVTIME)
+    }
+    stopMoving()
+    {
+        clearInterval(this.movid)
     }
     inBounds(v)
     {

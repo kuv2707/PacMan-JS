@@ -18,6 +18,7 @@ export default class
         htmlelem.move(initpos.x*window.CELL_DIMENSION, initpos.y*window.CELL_DIMENSION)
         const este=this
         this.position=initpos
+        this.lastPos=initpos
         this.plannedDir=null
         this.dir={x:0,y:1}
         this.spd=200+Math.floor(500*Math.random())
@@ -46,14 +47,19 @@ export default class
                 
 
             }
+            este.lastPos={x:este.position.x,y:este.position.y}
             este.position.x+=este.dir.x
-                este.position.y+=este.dir.y
+            este.position.y+=este.dir.y
             este.htmltag.move(window.CELL_DIMENSION*este.position.x,window.CELL_DIMENSION*este.position.y)
         }
     }
     startMoving()
     {
         this.movid=setInterval(this.mover,this.spd)
+    }
+    stopMoving()
+    {
+        clearInterval(this.movid)
     }
     inBounds(v)
     {

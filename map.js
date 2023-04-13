@@ -9,7 +9,6 @@ function generateMap(parentNode)
 {
     const addAt=function(x,y,type)
     {
-        console.log(x+"  "+y)
         let k = document.createElement("div")
         k.className = type
         window.transf(k)
@@ -52,19 +51,18 @@ function generateMap(parentNode)
                 if(Math.random()<0.02)
                 {
                     k=addAt(i,j,"pellet pellet-bonus")
-                    k.points=1
+                    k.points=8
                 }
                 else
                 {
                     k=addAt(i,j,"pellet")
-                    k.points=2
+                    k.points=1
                 }
 
             }
         }
     }
 
-    console.log(BOARD)
     return BOARD
 }
 

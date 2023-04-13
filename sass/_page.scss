@@ -14,10 +14,18 @@
     grid-template-columns: repeat($COLUMNS,$CELL_DIMENSION);
     grid-template-rows: repeat($ROWS,$CELL_DIMENSION);
     left:50%;
+    top:10%;
     transform: translateX(-#{$COLUMNS/2*$CELL_DIMENSION});
 }
 body
 {
     background-color: rgb(0, 0, 0);
     overflow: hidden;
+}
+.score
+{
+    display: block;
+    color: white;
+    text-align: center;
+    //font-size: 4rem;
 }
