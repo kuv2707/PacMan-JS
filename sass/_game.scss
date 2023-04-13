@@ -18,5 +18,16 @@
     &-bonus
     {
         background-image: radial-gradient(white,black 45%);
+        animation: flash .4s linear infinite;
+    }
+}
+@keyframes flash {
+    0%
+    {
+        background-image: radial-gradient(white,black 45%);
+    }
+    100%
+    {
+        background-image: radial-gradient(rgb(19, 18, 18),black 45%);
     }
 }

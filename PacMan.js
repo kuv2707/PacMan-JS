@@ -1,13 +1,14 @@
 import transf from "./transformManager.js"
 const MOVTIME=250
-export default class Ghost
+export default class
 {
     constructor(map,initpos)
     {
         this.map=map
-        let htmlelem=document.createElement("div")
+        let htmlelem=document.createElement("img")
+        htmlelem.src="fitted.gif"
         htmlelem.className="pacman"
-        htmlelem.innerText="🤡"//TODO: replace by image
+        // htmlelem.innerText="🤡"//TODO: replace by image
         this.htmltag=htmlelem
         transf(htmlelem)
         htmlelem.move(initpos.x*window.CELL_DIMENSION, initpos.y*window.CELL_DIMENSION)
@@ -21,6 +22,7 @@ export default class Ghost
             {
                 este.dir=este.plannedDir
                 este.plannedDir=null
+                este.htmltag.rotate(getDeg(este.dir))
             }
             if(este.inBounds(vecAdd(este.position,este.dir)))
             {
@@ -28,7 +30,12 @@ export default class Ghost
                 este.position.y+=este.dir.y
             }
             este.htmltag.move(window.CELL_DIMENSION*este.position.x,window.CELL_DIMENSION*este.position.y)
-            setTimeout(()=>este.map[este.position.y][este.position.x]?.remove(),100)
+            
+            setTimeout(()=>{
+                este.map[este.position.y][este.position.x]?.remove()
+                este.map[este.position.y][este.position.x]={className:"null"}
+                
+            },100)
         }
         document.body.addEventListener("keydown",(e)=>//arrow keys are not detected on keypress
         {
@@ -71,4 +78,16 @@ export default class Ghost
 function vecAdd(v1,v2)
 {
     return {x:v1.x+v2.x,y:v1.y+v2.y}
+}
+function getDeg({x,y})
+{
+    if(x==1 && y==0)
+    return 0
+    if(x==-1 && y==0)
+    return 180
+    if(x==0 && y==1)
+    return 90
+    if(x==0 && y==-1)
+    return -90
+
 }

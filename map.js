@@ -49,7 +49,7 @@ function generateMap(parentNode)
             {
                 //add pellet here
                 let k
-                if(Math.random()<0.01)
+                if(Math.random()<0.02)
                 {
                     k=addAt(i,j,"pellet pellet-bonus")
                     k.points=1

@@ -1,4 +1,4 @@
-.pacman
+.ghost
 {
     position: absolute;
     width:$CELL_DIMENSION;
@@ -7,6 +7,5 @@
     transition: all $MOVTIME linear;
     border-radius: 50%;
     font-size: 25px;
-    background-image: url("../tenor.gif");
     background-size: cover;
 }

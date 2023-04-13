@@ -12,8 +12,7 @@ export default function addTransformManager(element)
     }
     element.rotate=function(value)
     {
-        let newr=(this.rotateVal+value)%360
-        this.rotateVal=newr
+        this.rotateVal=value
         this.updateAppearance();
        
     }
