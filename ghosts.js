@@ -8,9 +8,8 @@ export default class
         htmlelem.className="ghost"
         this.baseFace=cont("#"+randcol)
         htmlelem.innerHTML=this.baseFace
-        console.log(htmlelem)
         htmlelem.remove()
-
+        this.dead=false
         this.htmltag=htmlelem
         transf(htmlelem)
         htmlelem.scale(1.2)
@@ -54,6 +53,7 @@ export default class
     }
     startMoving(speed=this.spd)
     {
+        this.stopMoving(this.movid)
         this.htmltag.style.transitionDuration=speed+"ms"
         this.movid=setInterval(this.mover,speed)
     }
@@ -67,15 +67,29 @@ export default class
     }
     panic()
     {
+        this.panicking=true
+        clearTimeout(this.plannedRelax)
         this.stopMoving()
         this.htmltag.innerHTML=cont("blue")
         this.startMoving(0.5*this.spd)
-        setTimeout(()=>
+        this.plannedRelax=setTimeout(()=>
         {
             this.stopMoving()
             this.startMoving(this.spd)
             this.htmltag.innerHTML=this.baseFace
+            this.panicking=false
         },10000)
+    }
+    isPanicking()
+    {
+        return this.panicking
+    }
+    die()
+    {
+        console.log("dying")
+        this.stopMoving()
+        this.htmltag.remove()
+        this.dead=true
     }
 }
 function vec(x,y)

@@ -1,3 +1,5 @@
+//this file is sourced from one of my earlier projects:  https://github.com/kuv2707/Chess-JS
+
 export default function addTransformManager(element)
 {
     element.scaleVal={x:1,y:1};

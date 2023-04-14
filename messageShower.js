@@ -1,3 +1,6 @@
+//this file is sourced from one of my earlier projects:  https://github.com/kuv2707/spaceShoot
+
+
 let msgdiv=document.createElement("div")
 msgdiv.id="msgShower"
 
@@ -26,3 +29,4 @@ window.addEventListener("resize",()=>
 {
     msgdiv.move(window.innerWidth/2-msgdiv.clientWidth/2,window.innerHeight/2-msgdiv.clientHeight/2)
 })
+

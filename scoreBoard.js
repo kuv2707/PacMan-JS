@@ -7,28 +7,35 @@ export default class
      */
     constructor(parameters)
     {
-        let score=document.querySelector(".score")
+        let score=document.querySelector(".scoreBoard")
         this.params=parameters
         this.board=score
-        this.update()
-
+        let len=Object.keys(parameters).length
+        score.style.gridTemplateColumns=`repeat(${len},${100/len}%)`
+        console.log(parameters)
+        for(let i of Object.keys(this.params))
+            {
+                let param=this.params[i]
+                console.log(i)
+                param.key=i
+                let dis=document.createElement("label")
+                dis.className="scoreBoard__label"
+                score.append(dis)
+                param.display=dis
+                this.update(param)
+            }
     }
     setParameter(name,val)
     {
-        this.params[name]=val;
-
-        this.update()
+        this.params[name].value=val
+        this.update(this.params[name])
     }
     getParameter(name)
     {
-        return this.params[name]
+        return this.params[name].value
     }
-    update()
+    update(ob)
     {
-        this.board.innerText=""
-        for(let key of Object.keys(this.params))
-        {
-            this.board.innerText+=`  ${key}: ${this.params[key]}`
-        }
+        ob.display.innerText=`${ob.key}: ${ob.value}`
     }
 }

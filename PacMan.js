@@ -1,5 +1,6 @@
 import transf from "./transformManager.js"
 const MOVTIME=250
+const nullobj={className:"null"}
 export default class
 {
     constructor(map,initpos,scoreBoard)
@@ -41,9 +42,9 @@ export default class
                         window.Game.ghostPanic()
                     }
                     scoreBoard.setParameter("score",scoreBoard.getParameter("score")+k.points)
-                    
+                    window.Game.reducePellet()
                 }
-                este.map[este.position.y][este.position.x]={className:"null"}
+                este.map[este.position.y][este.position.x]=nullobj
                 
             },100)
         }
@@ -74,6 +75,12 @@ export default class
                 }
             }
         })
+    }
+    forceMove({x,y})
+    {
+        this.position.x=x
+        this.position.y=y
+        this.htmltag.move(window.CELL_DIMENSION*this.position.x,window.CELL_DIMENSION*this.position.y)
     }
     startMoving()
     {
