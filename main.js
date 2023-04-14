@@ -7,12 +7,15 @@ import Pacman from "./PacMan.js"
 import Ghost from "./ghosts.js"
 import generateMap from  "./map.js"
 import ScoreBoard from "./scoreBoard.js"
+import messageShower from "./messageShower.js"
 
-let field=document.querySelector(".field")
+
+let field=document.createElement("div")
+field.className="field"
 const map=generateMap(field)
 let scoreboard=new ScoreBoard({
     "score":0,
-    "lives":"😀😀😀"
+    "lives":3
 })
 let pacman=new Pacman(map,{x:1,y:1},scoreboard)
 const ghosts=[]
@@ -21,7 +24,7 @@ for(let i=0;i<5;i++)
     let k=new Ghost(map,{x:15,y:8})
     field.append(k.htmltag)
     ghosts.push(k)
-    k.startMoving()
+    
 }
 
 
@@ -30,10 +33,18 @@ document.body.addEventListener("keypress",(e)=>
 {
     if(e.key==" ")
     pacman.startMoving()
-
+    ghosts.forEach(k=>k.startMoving())
+    messageShower.clearMessage()
 },{once:true})
 
 
+
+window.Game={ghosts,pacman,scoreboard,ghostPanic:function()
+{
+    ghosts.forEach(g=>g.panic())
+}}
+messageShower.showMessage("Ready?",`<u>Hit space</u> to start!`)
+document.body.append(field)
 let k=setInterval(function()
 {
     ghosts.forEach(g=>
@@ -46,12 +57,12 @@ let k=setInterval(function()
              */
             if(isSame(g.position,pacman.position) || (isSame(g.lastPos,pacman.position)  &&  dirParallelOrAntiparallel(pacman.dir,g.dir)))
             {
-                console.log("match")
                 pacman.stopMoving()
                 setTimeout(()=>pacman.htmltag.scale(0),300)
                 g.stopMoving()
-                scoreboard.setParameter("lives",repeatStr("😀",scoreboard.getParameter("lives").length-1))
+                scoreboard.setParameter("lives",scoreboard.getParameter("lives")-1)
                 clearInterval(k)
+                messageShower.showMessage("Dead!","Hit space to respawn")
             }
         })
 },200)
@@ -75,3 +86,6 @@ function repeatStr(str,times)
     ret+=str
     return ret
 }
+
+
+window.dispatchEvent(new Event("resize"))

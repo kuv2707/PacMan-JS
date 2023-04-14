@@ -33,16 +33,15 @@ export default class
             
             setTimeout(()=>{
                 let k=este.map[este.position.y][este.position.x]
-                console.log(k.className)
                 if(k  &&  k.className.includes("pellet"))
                 {
                     k.remove()
                     if(k.className.includes("-bonus"))
                     {
-                        console.log("bonusss")
+                        window.Game.ghostPanic()
                     }
-                    console.log("ate")
                     scoreBoard.setParameter("score",scoreBoard.getParameter("score")+k.points)
+                    
                 }
                 este.map[este.position.y][este.position.x]={className:"null"}
                 

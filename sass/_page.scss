@@ -29,3 +29,35 @@ body
     text-align: center;
     //font-size: 4rem;
 }
+
+#msg
+{
+    &Shower
+    {
+        position: absolute;
+        //width:100%;
+        transition-property: opacity;
+        transition-duration: 0.6s;
+        z-index: 2;
+        /* filter:blur(6px); */
+        text-align: center;
+        font-family: Space;
+        color:rgb(97, 212, 120);
+        
+        /* margin-top:30vh; */
+        border-radius: 30px;
+        box-shadow:0 0 15px rgb(36, 9, 94),
+        0 0 15px rgb(119, 149, 195) inset,
+        0 0 40px rgb(11, 155, 212),
+        0 0 400px rgb(46, 87, 93) inset;
+    }
+    &Head
+    {
+        font-size:min(20vw,150px);
+    }
+    &Body
+    {
+        font-size:min(12vw,80px);
+    }
+}
+ 

@@ -1,7 +1,5 @@
-make the map/
-make the pacman/
-make the pellet objects/ 
-make the ghost objects
+implement:
 
-implement pacman eating the pellets/
-implement ghosts being scared of pacman
+winning condition
+respawn
+ability to kill ghosts when panic
