@@ -7,12 +7,12 @@ import Ghost from "./ghosts.js"
 import generateMap from  "./map.js"
 import ScoreBoard from "./scoreBoard.js"
 import messageShower from "./messageShower.js"
-import scoreBoard from "./scoreBoard.js"
+
 
 
 let field=document.createElement("div")
 field.className="field"
-const map=generateMap(field)
+const map= await generateMap(field)
 let scoreboard=new ScoreBoard({
     score:{ value:0},
     lives:{ value:"😃😃😃"},
@@ -20,9 +20,9 @@ let scoreboard=new ScoreBoard({
 })
 let pacman=new Pacman(map,{x:1,y:1},scoreboard)
 const ghosts=[]
-for(let i=0;i<5;i++)
+for(let i=0;i<10;i++)
 {
-    let k=new Ghost(map,{x:15,y:8})
+    let k=new Ghost(map,{x:20,y:5})
     field.append(k.htmltag)
     ghosts.push(k)
     
@@ -58,6 +58,8 @@ reducePellet: function()
         messageShower.showMessage("You WON!","Didn't really expect that, did ya?")
     }
 }}
+
+
 messageShower.showMessage("Ready?",`Hit <u>space</u> to start!`)
 document.body.append(field)
 
@@ -81,8 +83,9 @@ setInterval(function()
                 {
                     if(g.isPanicking())
                     {
-                        delete ghosts[ghosts.find(k=>k==g)]
-                        g.die()
+                         delete ghosts[ghosts.find(k=>k==g)]
+                         g.die()
+                        g.forceMove(g.initpos)
                     }
                     else
                     {
@@ -131,4 +134,3 @@ function updateHiScore()
     window.localStorage.setItem("Hi",Math.max(window.localStorage.getItem("Hi")),scoreboard.getParameter("score"))
 }
 
-window.dispatchEvent(new Event("resize"))//for messageShower

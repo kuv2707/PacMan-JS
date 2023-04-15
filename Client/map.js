@@ -17,16 +17,43 @@ async function generateMap(parentNode)
         parentNode.append(k)
         return k
     }
-    //sourced from mapMaker.html
-    let s=await fetch("/api/game/board")
-    s=await s.json()
-    s=s.board
-    let entries=s.split(" ")
-    while(entries.length>2)
-    addAt(entries.pop(),entries.pop(),"wall")
-    addAt(0,21,"wall")
-    addAt(19,1,"wall")
-    addAt(19,3,"wall")
+    
+    
+    let s
+    try
+    {
+        s=(await fetch("/api/game/board").then(s=>s.json())).board
+        let entries=s.split(" ")
+        while(entries.length>2)
+        addAt(entries.pop(),entries.pop(),"wall")
+        addAt(0,21,"wall")
+        addAt(19,1,"wall")
+        addAt(19,3,"wall")
+
+    }
+    catch(err)//fallback option: for github pages
+    {
+        for (let i = 0; i < MAP_HEIGHT; i ++)
+        {
+            addAt(i,0,"wall")
+        }
+        for (let i = 0; i < MAP_HEIGHT; i ++)
+        {
+            addAt(i,MAP_WIDTH-1,"wall")
+        }
+        for (let i = 1; i < MAP_WIDTH; i++)
+        {
+            addAt(0,i,"wall")
+        }
+        for (let i = 1; i < MAP_WIDTH; i++)
+        {
+            addAt(MAP_HEIGHT-1,i,"wall")
+        }
+    }
+
+
+
+
 
     BOARD.pelletCount=0
     for(let i=0;i<BOARD.length;i++)

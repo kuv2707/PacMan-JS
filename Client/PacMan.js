@@ -7,7 +7,7 @@ export default class
     {
         this.map=map
         let htmlelem=document.createElement("img")
-        htmlelem.src="fitted.gif"
+        htmlelem.src="./Resources/Images/pacman.gif"
         htmlelem.className="pacman"
         // htmlelem.innerText="🤡"//TODO: replace by image
         this.htmltag=htmlelem

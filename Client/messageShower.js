@@ -30,3 +30,4 @@ window.addEventListener("resize",()=>
     msgdiv.move(window.innerWidth/2-msgdiv.clientWidth/2,window.innerHeight/2-msgdiv.clientHeight/2)
 })
 
+setTimeout(()=>window.dispatchEvent(new Event("resize")),400)//for messageShower

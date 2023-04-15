@@ -1,0 +1,5 @@
+implement:
+
+audio
+get ghost face from backend
+high score

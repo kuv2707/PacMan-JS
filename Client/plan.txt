@@ -1,3 +1,0 @@
-implement:
-
-ability to kill ghosts when panic

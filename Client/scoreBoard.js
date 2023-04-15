@@ -15,7 +15,6 @@ export default class
         for(let i of Object.keys(this.params))
             {
                 let param=this.params[i]
-                console.log(i)
                 param.key=i
                 let dis=document.createElement("label")
                 dis.className="scoreBoard__label"
