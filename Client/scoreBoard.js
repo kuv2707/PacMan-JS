@@ -12,7 +12,6 @@ export default class
         this.board=score
         let len=Object.keys(parameters).length
         score.style.gridTemplateColumns=`repeat(${len},${100/len}%)`
-        console.log(parameters)
         for(let i of Object.keys(this.params))
             {
                 let param=this.params[i]
