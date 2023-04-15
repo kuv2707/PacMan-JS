@@ -5,7 +5,9 @@ export default class
         this.map=map
         let htmlelem=document.createElement("div")
         htmlelem.className="ghost"
-        this.baseFace=face("red")
+        let randcol=Math.floor(500+Math.random()*(0xfff-500)).toString(16)
+        let color="#"+randcol
+        this.baseFace=face(color)
         // fetch("/api/game/ghostFace").then(k=>k.json()).then((face)=>{
         //     this.baseFace=face.ghostFace
         //     console.log(face)
@@ -74,7 +76,7 @@ export default class
         this.panicking=true
         clearTimeout(this.plannedRelax)
         this.stopMoving()
-        this.htmltag.innerHTML=cont("blue")
+        this.htmltag.innerHTML=face("blue")
         this.startMoving(0.5*this.spd)
         this.plannedRelax=setTimeout(()=>
         {

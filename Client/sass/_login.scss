@@ -1,0 +1,52 @@
+.login
+{
+    display: grid;
+    font-family: 'Montserrat', Tahoma, Geneva, Verdana, sans-serif;
+    padding: 30px 30px;
+    grid-template-columns: 200px 200px;
+    grid-template-rows: 50px 50px;
+    left:50%;
+    position: absolute;
+    top:150px;
+    transform: translate(-50%);
+    box-shadow: 0 0 30px white,inset 0 0 10px white;
+    background-color: darken(#2222d2,30%);
+    border-radius: 20px;
+    &__input
+    {
+        margin:10px 10px;
+        border-radius: 10px;
+        text-align: center;
+        &:focus,&:active
+        {
+            outline: none;
+            filter: drop-shadow(0 0 20px white);
+        }
+    }
+
+    &__btn
+    {
+        border:none;
+        border-radius: 30px;
+        color: white;
+        background-color: orange;
+        text-align: center;
+        width:80px;
+
+        
+    }
+    &__submit--container
+    {
+        display: flex;
+        justify-content: center;
+    }
+
+    
+
+    &__label
+    {
+        color: white;
+        margin: 10px 10px;
+    }
+
+}

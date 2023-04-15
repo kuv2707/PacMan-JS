@@ -9,9 +9,52 @@
 </head>
 <body>
 
-    <div class="scoreBoard"></div>
+    
+    <div class="login">
+        <label for="name" class="login__label">Enter Your Name:</label>
+        <input type="text" id="name" class="login__input" required>
+        <label for="password" class="login__label">Enter Password:</label>
+        <input type="password" id="password" class="login__input" required>
+        <div>
+            <label for="newusr" class="login__label">New User</label>
+            <input type="checkbox" id="newusr" class="login__input" tooltip="Check if you are a new user">
+        </div>
+        <div class="login__submit--container">
+            <button type="submit" onclick="redir()" class="login__btn">Submit</button>
+        </div>
+        
+    </div>
 
-    <script type="module" src="main.js"></script>
+    
+    <script>
+        const form=document.querySelector(".login")
+        let send={}
+        function redir()
+        {
+            let labels=form.querySelectorAll("label")
+            labels.forEach(label=>
+            {
+                let inp=form.querySelector("#"+label.getAttribute("for"))
+                send[label.getAttribute("for")]=inp.value
+            })
+            console.log(send)
+            fetch("/api/users/login",{
+                method:"POST",
+                body: JSON.stringify(send),
+                headers: {
+                    "Content-type": "application/json; charset=UTF-8"
+                }
+            }).then(r=>r.json()).then(isUserReal=>
+            {
+                console.log(isUserReal)
+                if(isUserReal.verdict==true)
+                window.location.href=window.location.origin+"/game.html"
+                else
+                console.log("FAKE user!!!!")
+            })
+
+        }
+        
     </script>
 </body>
 </html>

@@ -1,3 +1,43 @@
+.login {
+  display: grid;
+  font-family: "Montserrat", Tahoma, Geneva, Verdana, sans-serif;
+  padding: 30px 30px;
+  grid-template-columns: 200px 200px;
+  grid-template-rows: 50px 50px;
+  left: 50%;
+  position: absolute;
+  top: 150px;
+  transform: translate(-50%);
+  box-shadow: 0 0 30px white, inset 0 0 10px white;
+  background-color: #0d0d4e;
+  border-radius: 20px;
+}
+.login__input {
+  margin: 10px 10px;
+  border-radius: 10px;
+  text-align: center;
+}
+.login__input:focus, .login__input:active {
+  outline: none;
+  filter: drop-shadow(0 0 20px white);
+}
+.login__btn {
+  border: none;
+  border-radius: 30px;
+  color: white;
+  background-color: orange;
+  text-align: center;
+  width: 80px;
+}
+.login__submit--container {
+  display: flex;
+  justify-content: center;
+}
+.login__label {
+  color: white;
+  margin: 10px 10px;
+}
+
 .pacman {
   position: absolute;
   width: 30px;

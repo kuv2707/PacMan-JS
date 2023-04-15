@@ -22,7 +22,7 @@ let pacman=new Pacman(map,{x:1,y:1},scoreboard)
 const ghosts=[]
 for(let i=0;i<10;i++)
 {
-    let k=new Ghost(map,{x:20,y:5})
+    let k=new Ghost(map,{x:18,y:5})
     field.append(k.htmltag)
     ghosts.push(k)
     
@@ -90,7 +90,7 @@ setInterval(function()
                     else
                     {
                         pacman.stopMoving()
-                        setTimeout(()=>pacman.htmltag.scale(0),300)
+                        setTimeout(()=>pacman.htmltag.scale(0),500)
                         g.stopMoving()
                         scoreboard.setParameter("lives",scoreboard.getParameter("lives").substring(2))
                         scoreboard.setParameter("score",scoreboard.getParameter("score")-30)
@@ -131,6 +131,7 @@ function dirParallelOrAntiparallel(v1,v2)
 
 function updateHiScore()
 {
-    window.localStorage.setItem("Hi",Math.max(window.localStorage.getItem("Hi")),scoreboard.getParameter("score"))
+    window.localStorage.setItem("Hi",Math.max(window.localStorage.getItem("Hi"),scoreboard.getParameter("score")))
 }
 
+//fetch("/api/game/findPath")

@@ -4,5 +4,6 @@ const gameController= require("./gameController")
 
 router.route("/board").get(gameController.getBoard)
 router.route("/ghostFace").get(gameController.getGhostFace)
+router.route("/findPath").get(gameController.findPath)
 
 module.exports=router
