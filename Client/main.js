@@ -33,7 +33,7 @@ function addStartTriggerListener()
 {
     document.body.addEventListener("keypress",(e)=>
     {
-        pacman.htmltag.scale(1)
+        setTimeout(()=>pacman.htmltag.scale(1),100)
         pacman.forceMove({x:1,y:1})
         if(e.key==" ")
         pacman.startMoving()

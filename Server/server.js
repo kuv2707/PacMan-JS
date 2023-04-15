@@ -1,4 +1,4 @@
-const PORT=5800
+const PORT=5500
 
 const app=require("./app")
 
