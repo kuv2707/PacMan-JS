@@ -1,3 +1,6 @@
+*{
+    user-select: none;
+}
 .login
 {
     display: grid;
@@ -16,24 +19,37 @@
     &__input
     {
         margin:10px 10px;
-        border-radius: 10px;
         text-align: center;
+        background-color: transparent;
+        border: none;
+        outline: none;
+        border-bottom: 2px solid white;
+        color: white;
+        transition: all .2s;
         &:focus,&:active
         {
             outline: none;
+            border: none;
+            border-radius: 10px;
+            border-bottom: 2px solid white;
             filter: drop-shadow(0 0 20px white);
         }
     }
-
+    
     &__btn
     {
         border:none;
-        border-radius: 30px;
+        border-radius: 15px;
         color: white;
         background-color: orange;
         text-align: center;
         width:80px;
+        transition: all 0.4s;
 
+        &:hover
+        {
+            transform: scale(1.1);
+        }
         
     }
     &__submit--container
@@ -48,6 +64,43 @@
     {
         color: white;
         margin: 10px 10px;
+        display: block;
+        width:100%;
+        transition: all 0.2s;
     }
 
+
+
+
+    &__input[type="checkbox"]
+    {
+        display: none;
+
+        & + label
+        {
+            text-align: center;
+            margin:0 0;
+            padding:0 auto;
+            padding-top:12px;
+            padding-bottom: 0px;
+
+            box-shadow: (0 0px 4px white);
+            height:30px;
+            background-color: transparent;
+            border-radius: 10px;
+            &:hover
+            {
+                transform: scale(1.1);
+            }
+        }
+    }
+    &__input:checked + &__label
+    {
+        background-color: rgb(66, 186, 66);
+        box-shadow: (0 0px 8px white);
+        &:hover
+        {
+            transform: scale(1.1);
+        }
+    }
 }

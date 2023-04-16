@@ -84,6 +84,8 @@ setInterval(function()
                 {
                     if(g.isPanicking())
                     {
+                        g.htmltag.scale(0)
+                        setTimeout(()=>g.htmltag.scale(1),1000)
                         g.forceMove({x:18,y:5})
                     }
                     else

@@ -60,6 +60,8 @@ async function generateMap(parentNode)
     {
         for(let j=0;j<BOARD[0].length;j++)
         {
+            if(i==1 && j==1)
+            addAt(i,j,"null");//pacman's position
             if(!BOARD[i][j])
             {
                 //add pellet here
