@@ -8,16 +8,28 @@
     <title>Pac-Man</title>
 </head>
 <body>
-
+    <style>
+        body
+        {
+            height:100vh;
+            background-image: linear-gradient(rgb(95, 18, 133), black);
+        }
+        .icons
+        {
+            position: absolute;
+            transition-timing-function: linear;
+            z-index: -1;
+        }
+    </style>
     
     <div class="login">
         <label for="name" class="login__label">Enter Your Name:</label>
-        <input type="text" id="name" class="login__input" required>
+        <input type="text" id="name" class="login__input" reqd="true">
         <label for="password" class="login__label">Enter Password:</label>
-        <input type="password" id="password" class="login__input" required>
+        <input type="password" id="password" class="login__input" reqd="true">
         <div>
             <label for="newusr" class="login__label">New User</label>
-            <input type="checkbox" id="newusr" class="login__input" tooltip="Check if you are a new user">
+            <input type="checkbox" id="newusr" class="login__input" title="Check if you are a new user">
         </div>
         <div class="login__submit--container">
             <button type="submit" onclick="redir()" class="login__btn">Submit</button>
@@ -25,18 +37,33 @@
         
     </div>
 
-    
     <script>
         const form=document.querySelector(".login")
-        let send={}
+        form.showError=function()
+        {
+            this.style.backgroundColor="red"
+            setTimeout(() => {
+                form.style.backgroundColor="rgb(48, 29, 78)"
+            }, 1500);
+        }
         function redir()
         {
+            let send={}
             let labels=form.querySelectorAll("label")
-            labels.forEach(label=>
+            for(let i=0;i<labels.length;i++)
             {
+                let label=labels[i]
                 let inp=form.querySelector("#"+label.getAttribute("for"))
+                if(inp.getAttribute("reqd")=="true" && inp.value=="")
+                {
+                    form.showError()
+                    return
+                }
+                if(inp.getAttribute("type")=="checkbox")
+                send[label.getAttribute("for")]=inp.checked
+                else
                 send[label.getAttribute("for")]=inp.value
-            })
+            }
             console.log(send)
             fetch("/api/users/login",{
                 method:"POST",
@@ -50,10 +77,28 @@
                 if(isUserReal.verdict==true)
                 window.location.href=window.location.origin+"/game.html"
                 else
-                console.log("FAKE user!!!!")
+                form.showError()
             })
 
         }
+
+        for(let i=0;i<15;i++)
+        {
+            let k=document.createElement("div")
+            k.className="icons"
+            fetch("/api/game/ghostFace/random").then(k=>k.json()).then((face)=>{
+                k.innerHTML=face.ghostFace
+                document.body.append(k)
+            })
+            let transdur=500+500*Math.random()
+            k.style.transitionDuration=transdur+"ms"
+            setInterval(()=>
+            {
+                let tra=`translate(${window.innerWidth*Math.random()}px,${window.innerHeight*Math.random()}px) scale(${transdur/500})`
+                k.style.transform=tra
+            },transdur)
+        }
+        
         
     </script>
 </body>

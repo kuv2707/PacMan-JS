@@ -20,7 +20,7 @@ let scoreboard=new ScoreBoard({
 })
 let pacman=new Pacman(map,{x:1,y:1},scoreboard)
 const ghosts=[]
-for(let i=0;i<10;i++)
+for(let i=0;i<8;i++)
 {
     let k=new Ghost(map,{x:18,y:5})
     field.append(k.htmltag)
@@ -33,13 +33,15 @@ function addStartTriggerListener()
 {
     document.body.addEventListener("keypress",(e)=>
     {
-        setTimeout(()=>pacman.htmltag.scale(1),100)
+        setTimeout(()=>pacman.htmltag.scale(1),500)
         pacman.forceMove({x:1,y:1})
         if(e.key==" ")
         pacman.startMoving()
         ghosts.forEach(k=>k.startMoving())
         messageShower.clearMessage()
         window.Game.inProgress=true
+
+
     },{once:true})
 }
 
@@ -56,6 +58,7 @@ reducePellet: function()
         pacman.stopMoving()
         ghosts.forEach(g=>g.stopMoving())
         messageShower.showMessage("You WON!","Didn't really expect that, did ya?")
+        updateHiScore()
     }
 }}
 
@@ -72,8 +75,6 @@ setInterval(function()
         for(let i=0;i<ghosts.length;i++)
             {
                 let g=ghosts[i]
-                if(g.dead)
-                continue//should not be required!!!
                 /**
                  * the ghost has catched the pacman if:
                  * they are at the same spot
@@ -83,22 +84,25 @@ setInterval(function()
                 {
                     if(g.isPanicking())
                     {
-                         delete ghosts[ghosts.find(k=>k==g)]
-                         g.die()
-                        g.forceMove(g.initpos)
+                        g.forceMove({x:18,y:5})
                     }
                     else
                     {
                         pacman.stopMoving()
-                        setTimeout(()=>pacman.htmltag.scale(0),500)
+                        setTimeout(()=>pacman.htmltag.scale(0),100)
                         g.stopMoving()
                         scoreboard.setParameter("lives",scoreboard.getParameter("lives").substring(2))
                         scoreboard.setParameter("score",scoreboard.getParameter("score")-30)
                         window.Game.inProgress=false
                         if(scoreboard.getParameter("lives")==0)
                         {
-                            messageShower.showMessage("You LOST!","loser loser loser!")
+                            messageShower.showMessage("You LOST!","I mean.. seriously?")
                             updateHiScore()
+                            document.addEventListener("keypress",(e)=>
+                            {
+                                if(e.key==" ")
+                                window.location.reload()
+                            })
                         }
                         else
                         {
@@ -133,5 +137,3 @@ function updateHiScore()
 {
     window.localStorage.setItem("Hi",Math.max(window.localStorage.getItem("Hi"),scoreboard.getParameter("score")))
 }
-
-//fetch("/api/game/findPath")
