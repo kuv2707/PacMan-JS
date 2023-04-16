@@ -62,11 +62,18 @@ reducePellet: function()
     }
 }}
 
+window.playAudio=function(file)
+{
+    let k=new Audio("./Resources/Audio/pacman_"+file+".wav")
+    k.play()
+}
+
 
 messageShower.showMessage("Ready?",`Hit <u>space</u> to start!`)
 document.body.append(field)
 
 addStartTriggerListener()
+window.playAudio("beginning")
 
 //inspector function
 setInterval(function()
@@ -87,6 +94,7 @@ setInterval(function()
                         g.htmltag.scale(0)
                         setTimeout(()=>g.htmltag.scale(1),1000)
                         g.forceMove({x:18,y:5})
+                        window.playAudio("eatghost")
                     }
                     else
                     {
@@ -96,6 +104,7 @@ setInterval(function()
                         scoreboard.setParameter("lives",scoreboard.getParameter("lives").substring(2))
                         scoreboard.setParameter("score",scoreboard.getParameter("score")-30)
                         window.Game.inProgress=false
+                        window.playAudio("death")
                         if(scoreboard.getParameter("lives")==0)
                         {
                             messageShower.showMessage("You LOST!","I mean.. seriously?")

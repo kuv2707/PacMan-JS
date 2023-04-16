@@ -40,6 +40,11 @@ export default class
                     if(k.className.includes("-bonus"))
                     {
                         window.Game.ghostPanic()
+                        window.playAudio("eatfruit")
+                    }
+                    else
+                    {
+                        window.playAudio("chomp")
                     }
                     scoreBoard.setParameter("score",scoreBoard.getParameter("score")+k.points)
                     window.Game.reducePellet()
