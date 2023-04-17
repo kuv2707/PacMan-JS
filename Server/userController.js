@@ -10,12 +10,9 @@ let fs=require("fs")
 fs.readFile("./userdat.txt","utf-8",(err,data)=>
 {
     Users=JSON.parse(data)
+    //console.log(Users.find)
 })
 
-function userExists({name,password})
-{
-    return Users.find(k=>k.name==name&&k.password==password)>-1
-}
 function addUser(usr)
 {
     Users.push(usr)
@@ -30,26 +27,37 @@ function addUser(usr)
 function login(req,res)
 {
     let usrdat=req.body
-    let verdict
+    let verdict,message
+    let ind=Users.findIndex(k=>k.name==usrdat.name)
+    console.log(Users[ind],ind)
     if(usrdat.newusr==false )
     {
-        if(userExists(usrdat))
+        if(ind>-1 && usrdat.password==Users[ind].password)
         {
-            
             verdict=true
         }
         else
         {
             verdict=false
+            message="No such user exists"
         }
     }
     else
     {
-        addUser(usrdat)
-        verdict=true
+        
+        if(ind == -1)
+        {
+            addUser(usrdat)
+            verdict=true
+        }
+        else
+        {
+            verdict=false
+            message="A user with this name already exists"
+        }
     }
     res.status(200).json({
-        verdict
+        verdict,message
     })
 }
 module.exports={sayHi,login}

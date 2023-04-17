@@ -5,27 +5,15 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="sass/main.css">
-    <title>Pac-Man</title>
+    <title>Login</title>
 </head>
 <body>
-    <style>
-        body
-        {
-            height:100vh;
-            background-image: linear-gradient(rgb(95, 18, 133), black);
-        }
-        .icons
-        {
-            position: absolute;
-            transition-timing-function: linear;
-            z-index: -1;
-        }
-    </style>
+    
     
     <div class="login">
-        <label for="name" class="login__label">Enter Your Name:</label>
+        <label for="name" class="login__label">Name:</label>
         <input type="text" id="name" class="login__input" reqd="true">
-        <label for="password" class="login__label">Enter Password:</label>
+        <label for="password" class="login__label">Password:</label>
         <input type="password" id="password" class="login__input" reqd="true">
         <div>
             <input type="checkbox" id="newusr" class="login__input" title="Check if you are a new user">
@@ -34,17 +22,18 @@
         <div class="login__submit--container">
             <button type="submit" onclick="redir()" class="login__btn">Submit</button>
         </div>
-        
     </div>
+    <h3 class="errorElem"></h3>
 
     <script>
         const form=document.querySelector(".login")
-        form.showError=function()
+        form.showError=function(msg)
         {
             this.style.backgroundColor="red"
             setTimeout(() => {
                 form.style.backgroundColor="rgb(48, 29, 78)"
-            }, 1500);
+            }, 3000);
+            showErrorMessage(msg)
         }
         function redir()
         {
@@ -56,7 +45,7 @@
                 let inp=form.querySelector("#"+label.getAttribute("for"))
                 if(inp.getAttribute("reqd")=="true" && inp.value=="")
                 {
-                    form.showError()
+                    form.showError("Please fill out the "+inp.id)
                     return
                 }
                 if(inp.getAttribute("type")=="checkbox")
@@ -77,7 +66,10 @@
                 if(isUserReal.verdict==true)
                 window.location.href=window.location.origin+"/game.html"
                 else
-                form.showError()
+                {
+                    form.showError(isUserReal.message)
+                    
+                }
             })
 
         }
@@ -99,7 +91,13 @@
             },transdur)
         }
         
-        
+        let errElem=document.querySelector(".errorElem")
+        function showErrorMessage(msg)
+        {
+            errElem.innerText=msg
+            errElem.style.transform=`translateY(250px) translateX(-50%)`
+            setTimeout(()=>errElem.style.transform=`translateX(-50%)`,3000)
+        }
     </script>
 </body>
 </html>

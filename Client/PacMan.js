@@ -44,7 +44,7 @@ export default class
                     }
                     else
                     {
-                        window.playAudio("chomp")
+                        //window.playAudio("chomp")// very annoying
                     }
                     scoreBoard.setParameter("score",scoreBoard.getParameter("score")+k.points)
                     window.Game.reducePellet()
