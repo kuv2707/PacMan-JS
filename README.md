@@ -29,4 +29,4 @@ Hi-score for a user is stored in window.localStorage
 <br>
 This project is my original work and is therefore prone to bugs. It is a result of several sleepless nights throughout the week. I have tried my best to manage this along with the upcoming Mid Semester examinations, but feel that this project could have been a lot better if I had more time to work on it. 
 <br>
-I hope it is good enough
+I hope it is good enough.
