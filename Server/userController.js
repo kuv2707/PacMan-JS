@@ -10,7 +10,6 @@ let fs=require("fs")
 fs.readFile("./userdat.txt","utf-8",(err,data)=>
 {
     Users=JSON.parse(data)
-    //console.log(Users.find)
 })
 
 function addUser(usr)
@@ -29,7 +28,6 @@ function login(req,res)
     let usrdat=req.body
     let verdict,message
     let ind=Users.findIndex(k=>k.name==usrdat.name)
-    console.log(Users[ind],ind)
     if(usrdat.newusr==false )
     {
         if(ind>-1 && usrdat.password==Users[ind].password)
