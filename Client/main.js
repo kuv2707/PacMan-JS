@@ -74,6 +74,7 @@ document.body.append(field)
 
 addStartTriggerListener()
 window.playAudio("beginning")
+document.body.style.backgroundImage="linear-gradient(black,black)"
 
 //inspector function
 setInterval(function()

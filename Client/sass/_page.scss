@@ -14,16 +14,22 @@
     grid-template-columns: repeat($COLUMNS,$CELL_DIMENSION);
     grid-template-rows: repeat($ROWS,$CELL_DIMENSION);
     left:50%;
-    top:10%;
+    top:0rem;
     transform: translateX(-#{$COLUMNS/2*$CELL_DIMENSION});
+}
+
+@font-face {
+    font-family: PacFont;
+    src: url("../Resources/PacFont.ttf");
 }
 body
 {
     background-color: rgb(0, 0, 0);
-    //overflow: hidden;
+    overflow: hidden;
     position: relative;
-    // height:100vh;
-    // background-image: linear-gradient(black,blue 90%);
+     height:100vh;
+    background-image: linear-gradient(black,rgb(56, 23, 92) 90%);
+    font-family: "Comic Sans MS";
 }
 .scoreBoard
 {
@@ -51,7 +57,6 @@ body
         z-index: 2;
         /* filter:blur(6px); */
         text-align: center;
-        font-family: Space;
         color:rgb(97, 212, 120);
         
         /* margin-top:30vh; */

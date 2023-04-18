@@ -11,6 +11,8 @@
     
     
     <div class="login">
+        <h1 class="login__heading">Login</h1>
+        <div></div>
         <label for="name" class="login__label">Name:</label>
         <input type="text" id="name" class="login__input" reqd="true">
         <label for="password" class="login__label">Password:</label>
@@ -86,7 +88,7 @@
             k.style.transitionDuration=transdur+"ms"
             setInterval(()=>
             {
-                let tra=`translate(${window.innerWidth*Math.random()}px,${window.innerHeight*Math.random()}px) scale(${transdur/500})`
+                let tra=`translate(${(window.innerWidth-50)*Math.random()}px,${(window.innerHeight-50)*Math.random()}px) scale(${transdur/500})`
                 k.style.transform=tra
             },transdur)
         }
