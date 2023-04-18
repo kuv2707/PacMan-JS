@@ -24,6 +24,7 @@ Hi-score for a user is stored in window.localStorage
 * Used the BEM notation in html class names
 * Used SCSS to make CSS more managable
 * Used the MVC architecture in the backend
+* Audio is played when the pacman kills a ghost, is killed by one, etc.
 
 
 <br>
