@@ -18,20 +18,20 @@
         <label for="password" class="login__label">Password:</label>
         <input type="password" id="password" class="login__input" reqd="true">
         <div>
-            <input type="checkbox" id="newusr" class="login__input" title="Check if you are a new user">
-            <label for="newusr" class="login__label">I Am A New User</label>
+            <input type="checkbox" id="newusr" class="login__input">
+            <label for="newusr" class="login__label" title="Enabling this option will sign you up">I Am A New User</label>
         </div>
         <div class="login__submit--container">
             <button type="submit" onclick="redir()" class="login__btn">Submit</button>
         </div>
     </div>
-    <h3 class="errorElem"></h3>
+    <div class="errorElem"></div>
 
     <script>
         const form=document.querySelector(".login")
-        form.showError=function(msg)
+        function showError(msg)
         {
-            this.style.backgroundColor="red"
+            form.style.backgroundColor="red"
             setTimeout(() => {
                 form.style.backgroundColor="rgb(48, 29, 78)"
             }, 3000);
@@ -40,14 +40,14 @@
         function redir()
         {
             let send={}
-            let labels=form.querySelectorAll("label")
+            let labels=form.querySelectorAll(".login__label")
             for(let i=0;i<labels.length;i++)
             {
                 let label=labels[i]
                 let inp=form.querySelector("#"+label.getAttribute("for"))
                 if(inp.getAttribute("reqd")=="true" && inp.value=="")
                 {
-                    form.showError("Please fill out the "+inp.id)
+                    showError("Please fill out the "+inp.id)
                     return
                 }
                 if(inp.getAttribute("type")=="checkbox")
@@ -69,7 +69,7 @@
                 window.location.href=window.location.origin+"/game.html"
                 else
                 {
-                    form.showError(isUserReal.message)
+                    showError(isUserReal.message)
                     
                 }
             })

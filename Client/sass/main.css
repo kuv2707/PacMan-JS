@@ -43,13 +43,15 @@
   font-family: inherit;
   border-radius: 15px;
   color: white;
-  background-color: orange;
+  background-color: #ff602e;
   text-align: center;
   width: 80px;
-  transition: all 0.4s;
+  transition: all 0.2s;
 }
-.login__btn:hover {
+.login__btn:hover, .login__btn:focus {
   transform: scale(1.1);
+  box-shadow: 0 0 10px white;
+  outline: none;
 }
 .login__submit--container {
   display: flex;
@@ -78,13 +80,15 @@
 }
 .login__input[type=checkbox] + label:hover {
   transform: scale(1.1);
+  box-shadow: 0 0px 10px white;
 }
 .login__input:checked + .login__label {
   background-color: rgb(66, 186, 66);
   box-shadow: 0 0px 8px white;
 }
-.login__input:checked + .login__label:hover {
+.login__input:checked + .login__label:hover, .login__input:checked + .login__label:active {
   transform: scale(1.1);
+  outline: none;
 }
 
 .icons {
@@ -98,8 +102,7 @@
   left: 50%;
   border-radius: 10px;
   background-color: red;
-  width: 250px;
-  height: 30px;
+  padding: 6px 20px;
   display: block;
   text-align: center;
   top: -200px;

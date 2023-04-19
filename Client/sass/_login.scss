@@ -48,14 +48,15 @@
         font-family: inherit;
         border-radius: 15px;
         color: white;
-        background-color: orange;
+        background-color:#ff602e;
         text-align: center;
         width:80px;
-        transition: all 0.4s;
-
-        &:hover
+        transition: all 0.2s;
+        &:hover,&:focus
         {
             transform: scale(1.1);
+            box-shadow: 0 0 10px white;
+            outline: none;
         }
         
     }
@@ -98,6 +99,7 @@
             &:hover
             {
                 transform: scale(1.1);
+                box-shadow: (0 0px 10px white);
             }
         }
     }
@@ -105,9 +107,10 @@
     {
         background-color: rgb(66, 186, 66);
         box-shadow: (0 0px 8px white);
-        &:hover
+        &:hover,&:active
         {
             transform: scale(1.1);
+            outline: none;
         }
     }
 
@@ -125,8 +128,7 @@
     left:50%;
     border-radius: 10px;
     background-color: red;
-    width:250px;
-    height:30px;
+    padding: 6px 20px;
     display: block;
     text-align: center;
     top:-200px;
