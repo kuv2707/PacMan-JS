@@ -73,17 +73,17 @@
   padding: 0 auto;
   padding-top: 12px;
   padding-bottom: 0px;
-  box-shadow: 0 0px 4px white;
+  box-shadow: inset 0 0px 4px white;
   height: 30px;
   background-color: transparent;
   border-radius: 10px;
 }
 .login__input[type=checkbox] + label:hover {
   transform: scale(1.1);
-  box-shadow: 0 0px 10px white;
+  box-shadow: inset 0 0px 4px white, 0 0px 10px white;
 }
 .login__input:checked + .login__label {
-  background-color: rgb(66, 186, 66);
+  background-color: rgb(24, 152, 24);
   box-shadow: 0 0px 8px white;
 }
 .login__input:checked + .login__label:hover, .login__input:checked + .login__label:active {
@@ -178,7 +178,7 @@ body {
   overflow: hidden;
   position: relative;
   height: 100vh;
-  background-image: linear-gradient(black, rgb(56, 23, 92) 90%);
+  background-image: radial-gradient(rgb(56, 23, 92), rgb(0, 0, 0) 90%);
   font-family: "Comic Sans MS";
 }
 

@@ -52,6 +52,7 @@
         text-align: center;
         width:80px;
         transition: all 0.2s;
+        
         &:hover,&:focus
         {
             transform: scale(1.1);
@@ -92,20 +93,20 @@
             padding-top:12px;
             padding-bottom: 0px;
 
-            box-shadow: (0 0px 4px white);
+            box-shadow: ( inset 0 0px 4px white);
             height:30px;
             background-color: transparent;
             border-radius: 10px;
             &:hover
             {
                 transform: scale(1.1);
-                box-shadow: (0 0px 10px white);
+                box-shadow:( inset 0 0px 4px white), (0 0px 10px white);
             }
         }
     }
     &__input:checked + &__label
     {
-        background-color: rgb(66, 186, 66);
+        background-color: rgb(24, 152, 24);
         box-shadow: (0 0px 8px white);
         &:hover,&:active
         {

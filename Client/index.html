@@ -8,8 +8,6 @@
     <title>Login</title>
 </head>
 <body>
-    
-    
     <div class="login">
         <h1 class="login__heading">Login</h1>
         <div></div>
@@ -56,7 +54,7 @@
                 send[label.getAttribute("for")]=inp.value
             }
             console.log(send)
-            fetch("/api/users/login",{
+            fetch(`/api/users/${send.newusr?"signup":"login"}`,{
                 method:"POST",
                 body: JSON.stringify(send),
                 headers: {
@@ -66,7 +64,10 @@
             {
                 console.log(isUserReal)
                 if(isUserReal.verdict==true)
-                window.location.href=window.location.origin+"/game.html"
+                {
+                    window.location.href=window.location.origin+"/game.html"
+                    
+                }
                 else
                 {
                     showError(isUserReal.message)
