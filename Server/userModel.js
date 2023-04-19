@@ -6,7 +6,7 @@ class User
 {
     constructor(nam,pwd)
     {
-        this.name=nam
+        this.name=nam.trim()
         this.password=pwd
     }
 }

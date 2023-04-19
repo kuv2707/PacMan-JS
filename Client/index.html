@@ -53,7 +53,7 @@
                 else
                 send[label.getAttribute("for")]=inp.value
             }
-            console.log(send)
+            //console.log(send)
             fetch(`/api/users/${send.newusr?"signup":"login"}`,{
                 method:"POST",
                 body: JSON.stringify(send),
@@ -66,7 +66,7 @@
                 if(isUserReal.verdict==true)
                 {
                     window.location.href=window.location.origin+"/game.html"
-                    
+
                 }
                 else
                 {

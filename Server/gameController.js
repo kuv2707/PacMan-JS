@@ -1,3 +1,5 @@
+const fs=require("fs")
+
 function getBoard(req,res)
 {
     res.status(200).json({
@@ -16,22 +18,16 @@ function getGhostFace(req,res)
     })
 }
 
-module.exports={getBoard,getGhostFace}
-
-const fs=require("fs")
 const boardCoords=fs.readFileSync("boardCoords").toString()
-
 function randBoard()
 {
     return boardCoords
 }
 
-
 const ghostFace=fs.readFileSync("ghostFace").toString()
-
-
 function face(color)
 {
     return ghostFace.replace("FACECOLOR",color)
 }
 
+module.exports={getBoard,getGhostFace}

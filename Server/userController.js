@@ -36,7 +36,6 @@ function login(req,res)
         verdict,message
     })
 }
-
 function signup(req,res)
 {
     let usrdat=req.body

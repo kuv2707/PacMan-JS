@@ -17,7 +17,6 @@
     border-radius: 20px;
     transition: all 0.4s;
 
-
     &__heading
     {
         color: white;
@@ -67,8 +66,6 @@
         justify-content: center;
     }
 
-    
-
     &__label
     {
         color: white;
@@ -77,9 +74,6 @@
         width:100%;
         transition: all 0.2s;
     }
-
-
-
 
     &__input[type="checkbox"]
     {
