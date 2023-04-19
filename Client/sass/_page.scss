@@ -30,6 +30,8 @@ body
      height:100vh;
     // background-image: linear-gradient(to bottom right,rgb(0, 0, 0),rgb(56, 23, 92) 90%);
     background-image: radial-gradient(rgb(56, 23, 92),rgb(0, 0, 0) 90%);
+    background-repeat: no-repeat;
+    background-size: cover;
     font-family: "Comic Sans MS";
 }
 .scoreBoard

@@ -9,9 +9,10 @@
     grid-template-columns: 200px 200px;
     grid-template-rows: 50px 50px;
     left:50%;
+    top:50%;
     position: absolute;
-    top:150px;
-    transform: translate(-50%);
+    //top:150px;
+    transform: translate(-50%, -50%);
     box-shadow: 0 0 30px white,inset 0 0 10px white;
     background-color: rgb(48, 29, 78);
     border-radius: 20px;
