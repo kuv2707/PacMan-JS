@@ -24,6 +24,7 @@
         </div>
     </div>
     <div class="errorElem"></div>
+    <div class="scoreBoard"></div>
 
     <script>
         const form=document.querySelector(".login")
@@ -65,8 +66,13 @@
                 console.log(isUserReal)
                 if(isUserReal.verdict==true)
                 {
-                    window.location.href=window.location.origin+"/game.html"
-
+                    //window.location.href=window.location.origin+"/game.html"
+                    errElem.remove()
+                    form.remove()
+                    let s=document.createElement("script")
+                    s.type="module"
+                    s.src="main.js"
+                    document.body.append(s)
                 }
                 else
                 {

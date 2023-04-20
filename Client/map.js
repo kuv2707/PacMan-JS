@@ -24,7 +24,7 @@ async function generateMap(parentNode)
     {
         s=(await fetch("/api/game/board").then(s=>s.json())).board
         let entries=s.split(" ")
-        while(entries.length>2)
+        while(entries.length>=2)
         addAt(entries.pop(),entries.pop(),"wall")
         addAt(0,21,"wall")
         addAt(19,1,"wall")

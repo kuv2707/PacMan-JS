@@ -18,7 +18,7 @@ function getGhostFace(req,res)
     })
 }
 
-const boardCoords=fs.readFileSync("boardCoords").toString()
+const boardCoords=fs.readFileSync("boardCoords.txt").toString()
 function randBoard()
 {
     return boardCoords
