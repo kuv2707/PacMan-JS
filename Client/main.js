@@ -13,10 +13,12 @@ import messageShower from "./messageShower.js"
 let field=document.createElement("div")
 field.className="field"
 const map= await generateMap(field)
+const hiscr=await fetch("/api/users/hiscore?id="+USERID).then(k=>k.json())
+let hiscore=hiscr.hiscore
 let scoreboard=new ScoreBoard({
     score:{ value:0},
     lives:{ value:"😃😃😃"},
-    Hi:{value:window.localStorage.getItem("Hi")??0}
+    Hi:{value:hiscore}
 })
 let pacman=new Pacman(map,{x:1,y:1},scoreboard)
 const ghosts=[]
@@ -33,6 +35,8 @@ function addStartTriggerListener()
 {
     document.body.addEventListener("keypress",(e)=>
     {
+        if(e.key!=" ")
+        return
         setTimeout(()=>pacman.htmltag.scale(1),500)
         pacman.forceMove({x:1,y:1})
         if(e.key==" ")
@@ -147,5 +151,9 @@ function dirParallelOrAntiparallel(v1,v2)
 
 function updateHiScore()
 {
-    window.localStorage.setItem("Hi",Math.max(window.localStorage.getItem("Hi"),scoreboard.getParameter("score")))
+    hiscore=Math.max(hiscore,scoreboard.getParameter("score"))
+    
+    fetch("/api/users/hiscore?id="+USERID+"&hiscore="+hiscore,{
+        method:"PATCH"
+    })
 }

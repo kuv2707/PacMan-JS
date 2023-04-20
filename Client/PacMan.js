@@ -36,11 +36,13 @@ export default class
                 let k=este.map[este.position.y][este.position.x]
                 if(k  &&  k.className.includes("pellet"))
                 {
-                    k.remove()
+                    k.style.backgroundImage="radial-gradient(black,black)"
+                    
                     if(k.className.includes("-bonus"))
                     {
                         window.Game.ghostPanic()
                         window.playAudio("eatfruit")
+                        k.classList.remove("pellet-bonus")
                     }
                     else
                     {

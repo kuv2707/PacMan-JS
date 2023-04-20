@@ -92,7 +92,6 @@ export default class
         this.stopMoving()
         this.position.x=x
         this.position.y=y
-        console.log("forced to", JSON.stringify(this.position))
         this.startMoving()
     }
     isPanicking()

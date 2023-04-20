@@ -27,6 +27,7 @@
     <div class="scoreBoard"></div>
 
     <script>
+        let USERID
         const form=document.querySelector(".login")
         function showError(msg)
         {
@@ -66,9 +67,8 @@
                 console.log(isUserReal)
                 if(isUserReal.verdict==true)
                 {
-                    //window.location.href=window.location.origin+"/game.html"
-                    errElem.remove()
-                    form.remove()
+                    USERID=isUserReal.userid
+                    randghosts.forEach(n=>n.remove())
                     let s=document.createElement("script")
                     s.type="module"
                     s.src="main.js"
@@ -77,16 +77,16 @@
                 else
                 {
                     showError(isUserReal.message)
-                    
                 }
             })
 
         }
-
+        let randghosts=[]
         for(let i=0;i<25;i++)
         {
             let k=document.createElement("div")
             k.className="icons"
+            randghosts.push(k)
             fetch("/api/game/ghostFace/random").then(k=>k.json()).then((face)=>{
                 k.innerHTML=face.ghostFace
                 document.body.append(k)

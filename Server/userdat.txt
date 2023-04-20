@@ -1,1 +1,1 @@
-[{"name":"a","password":"a"}]
+[{"name":"a","password":"a","id":1681998035582,"hiscore":"10"}]
