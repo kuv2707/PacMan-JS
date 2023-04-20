@@ -5,7 +5,7 @@ This project is my submission for the COPS week 2023
 It is a simple game of Pacman
 
 I have implemented the server too, and a login functionality 
-Hi-score for a user is stored in window.localStorage
+The hiscore of the user is also stored in the database
 
 
 ## How to set it up:
@@ -19,7 +19,7 @@ Hi-score for a user is stored in window.localStorage
 * A login/signup page asking for name and password
 * A prompt on invalid input or failed attempt to login/signup
 * The backend is implemented in NodeJS and Express
-* The backend has some APIs used by the actual game for various purposes, like getting a random-colored ghost image
+* The backend has some APIs used by the actual game for various purposes, like getting a random-colored ghost image, getting and updating the hiscore
 * Highest score is locally stored in the browser, and is updated after the current game is over and next game starts
 * Used the BEM notation in html class names
 * Used SCSS to make CSS more managable
